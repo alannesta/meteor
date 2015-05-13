@@ -1,4 +1,4 @@
-angular.module('socially', ['angular-meteor', 'ui.router', 'ngMaterial'])
+angular.module('deckbuilder', ['angular-meteor', 'ui.router', 'ngMaterial'])
     .config(['$urlRouterProvider', '$stateProvider', '$mdThemingProvider',
         function($urlRouterProvider, $stateProvider, $mdThemingProvider) {
 
@@ -16,11 +16,13 @@ angular.module('socially', ['angular-meteor', 'ui.router', 'ngMaterial'])
                 })
                 .state('probability', {
                     url: '/probability',
-                    templateUrl: 'client/views/probability.ng.html'
+                    templateUrl: 'client/views/probability.ng.html',
+                    controller: 'ProbabilityController as ctrl'
                 })
                 .state('upload', {
                     url: '/upload',
-                    templateUrl: 'client/views/upload.ng.html'
+                    templateUrl: 'client/views/upload.ng.html',
+                    controller: 'UploadController as ctrl'
                 })
                 .state('test', {
                     url: '/test',
