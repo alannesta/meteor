@@ -7,12 +7,12 @@
             <!--</md-input-container>-->
             <!--<md-input-container flex>-->
 
-            <md-select placeholder="Name" ng-model="ctrl.card.name">
-                <md-option ng-repeat="card in ctrl.cards">{{card.name}}</md-option>
+            <md-select placeholder="Name" ng-model="ctrl.card">
+                <md-option ng-repeat="card in ctrl.filteredCards" ng-value="card">{{card.name}}</md-option>
             </md-select>
 
-            <md-select placeholder="Rarity" ng-model="ctrl.card.rarity" flex>
-                <md-option value="Normal">Normal</md-option>
+            <md-select placeholder="Rarity" ng-model="ctrl.filter.rarity" flex>
+                <md-option value="Common">Normal</md-option>
                 <md-option value="Epic">Epic</md-option>
                 <md-option value="Rare">Rare</md-option>
                 <md-option value="Legendary">Legendary</md-option>
@@ -20,7 +20,7 @@
             <!--</md-input-container>-->
 
 
-            <md-select placeholder="Class" ng-model="ctrl.card.class" flex>
+            <md-select placeholder="Class" ng-model="ctrl.filter.class" flex>
                 <md-option value="Druid">Druid</md-option>
                 <md-option value="Priest">Priest</md-option>
                 <md-option value="Shamman">Shamman</md-option>
@@ -31,7 +31,7 @@
                 <md-option value="Paladin">Paladin</md-option>
             </md-select>
 
-            <md-select placeholder="Cost" ng-model="ctrl.card.cost" flex>
+            <md-select placeholder="Cost" ng-model="ctrl.filter.cost" flex>
                 <md-option value="1">1</md-option>
                 <md-option value="2">2</md-option>
                 <md-option value="3">3</md-option>

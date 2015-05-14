@@ -7,10 +7,10 @@
   function uploadController($scope, $meteor){
 
       var self = this;
-      self.card = {};
       self.cards =  $meteor.collection(Cards);
-      console.log(self.cards);
-      
+      self.filteredCards = self.cards;
+      self.filter = {};     // the filter
+
       var allSets = {
           "Missions": [
               {
@@ -540,10 +540,23 @@
           self.cards.push(self.card);
       };
 
+      function filterCards() {
+          self.filteredCards = self.cards.filter(function(card) {
+              return (self.filter.class ? card.playerClass === self.filter.class: true) && (self.filter.rarity ? card.rarity === self.filter.rarity : true);
+          });
+      }
+
       $scope.$watch(function(){
           return self.card;
       }, function(val){
-          //console.log(val);
+          console.log('card selected: ---> ', val);
+      }, true);
+
+      // filtering criteria
+      $scope.$watch(function() {
+         return self.filter
+      }, function() {
+          filterCards();
       }, true);
 
   }

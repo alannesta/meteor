@@ -4,7 +4,6 @@ Meteor.methods({
     },
 
     initCollection: function(dataSet) {
-        console.log('called');
         Object.keys(dataSet).forEach(function(key) {
             dataSet[key].forEach(function(card){
                 var find = Cards.find({name: card.name}).fetch();
