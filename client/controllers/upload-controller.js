@@ -501,17 +501,25 @@
       self.initDatabase = function() {
           Object.keys(allSets).forEach(function(key) {
               allSets[key].forEach(function(card){
-                  //console.log(card.name);
-                  console.log(Cards.find({name: card.name}).fetch());
-                  //if (!self.cards.findOne({name: card.name})){
-                  //    self.cards.push(card);
-                  //}
+                  var name = (Cards.find({name: card.name}).fetch())[0].name;
+                  console.log(name);
+                  if (!Cards.findOne({name: card.name})){
+                      //self.cards.push(card);
+                      Cards.insert(card);
+                  }
               })
           });
       };
 
       self.cleanCollection = function() {
-          Cards.remove({});
+          //Cards.remove({});
+          Meteor.call('clearCollection', function(err, result){
+              if(err) {
+                  console.log(err);
+              }else{
+                  console.log(result);
+              }
+          });
       };
       
       document.getElementById('image-upload').addEventListener('change', handleFileSelect);
