@@ -36,6 +36,10 @@ md-sidenav  md-list {
     padding: 0px 0px 8px 0px;
 }
 
+#card-select-form md-select {
+    width: 200px;
+    height: 70px;
+}
 
 /* Primary content area */
 

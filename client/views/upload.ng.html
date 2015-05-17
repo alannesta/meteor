@@ -1,7 +1,16 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <span>Select A card</span>
+        <span flex></span>
+        <md-button class="md-accent md-raised md-hue-1" ng-click="ctrl.next()">
+            Next
+        </md-button>
+    </div>
+</md-toolbar>
 <md-content md-theme="docs-dark" class="md-padding" layout="row" layout-sm="column">
-    <form name="uploadForm">
-        <div layout layout-sm="column" layout-margin layout-align="center center">
 
+    <div layout layout-sm="column" layout-margin layout-align="center center">
+        <form id="card-select-form" name="uploadForm">
             <md-select placeholder="Name" ng-model="ctrl.card">
                 <md-option ng-repeat="card in ctrl.filteredCards" ng-value="card">{{card.name}}</md-option>
             </md-select>
@@ -25,9 +34,9 @@
                 <md-option value="Warlock">Warlock</md-option>
                 <md-option value="Paladin">Paladin</md-option>
             </md-select>
-        </div>
-    </form>
-    <md-button ng-click="ctrl.save()" class="md-fab">Save</md-button>
-    <md-button ng-click="ctrl.initDatabase()" class="md-fab">Init</md-button>
-    <md-button ng-click="ctrl.cleanCollection()" class="md-fab">Clean All</md-button>
+        </form>
+    </div>
+
+    <!--<md-button ng-click="ctrl.initDatabase()" class="md-fab">Init</md-button>-->
+    <!--<md-button ng-click="ctrl.cleanCollection()" class="md-fab">Clean All</md-button>-->
 </md-content>
