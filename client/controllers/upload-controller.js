@@ -13175,8 +13175,8 @@
                 });
             };
 
-            self.save = function() {
-                self.cards.push(self.card);
+            self.next = function() {
+
             };
 
             function filterCards() {
