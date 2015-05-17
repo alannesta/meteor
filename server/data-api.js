@@ -3,23 +3,9 @@ Meteor.methods({
         Cards.remove({});
     },
 
-    initCollection: function (dataSet) {
-        //Object.keys(dataSet).forEach(function(key) {
-        //    dataSet[key].forEach(function(card){
-        //        var find = Cards.find({name: card.name}).fetch();
-        //        var name = find[0]? 'already in data base: ---> ' + find[0].name : 'not found, insert new card: ---> ' + card.name;
-        //        console.log(name);
-        //        if (filterCard(card) && !Cards.findOne({id: card.id})){
-        //            Cards.insert(card);
-        //        }
-        //    })
-        //});
-        //
-
+    initCollection: function () {
         var fs = Npm.require('fs');
-        var Future = Npm.require('fibers/future');
-        var fut = new Future();
-        //console.log(__dirname);
+        var Fiber = Npm.require('fibers');
         var path = '../../../../../public/data.json';
         fs.readFile(path, 'utf-8', function (err, data) {
             if (err) {
@@ -27,25 +13,16 @@ Meteor.methods({
             } else {
                 //console.log(data);
                 var data = JSON.parse(data);
-                for (var key in data) {
-                    //data[key].forEach(function (card) {
-                    //    var find = Cards.find({name: card.name}).fetch();
-                    //    var name = find[0] ? 'already in data base: ---> ' + find[0].name : 'not found, insert new card: ---> ' + card.name;
-                    //    console.log(name);
-                    //    if (filterCard(card) && !Cards.findOne({id: card.id})) {
-                    //        Cards.insert(card);
-                    //    }
-                    //});
-                    for (var i = 0; i < data[key].length; i++) {
-                        var find = Cards.find({name: data[key][i].name}).fetch();
-                        var name = find[0] ? 'already in data base: ---> ' + find[0].name : 'not found, insert new card: ---> ' + card.name;
-                        console.log(name);
-                        if (filterCard(data[key][i]) && !Cards.findOne({id: data[key][i].id})) {
-                            Cards.insert(data[key][i]);
-                        }
+                Fiber(function () {
+                    for (var key in data) {
+                        data[key].forEach(function (card) {
+                            var find = Cards.find({name: card.name}).fetch();
+                            if (filterCard(card) && !Cards.findOne({id: card.id})) {
+                                Cards.insert(card);
+                            }
+                        });
                     }
-                }
-                fut.wait();
+                }).run();
             }
         });
         function filterCard(card) {
