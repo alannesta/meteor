@@ -8,7 +8,7 @@
             self.cards = $meteor.collection(Cards);
             self.filteredCards = self.cards;
             self.filter = {};     // the filter
-            
+
             self.initDatabase = function() {
                 var start = Date.now();
                 Meteor.call('initCollection', function(err, result) {

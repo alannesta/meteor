@@ -13,16 +13,19 @@ Meteor.methods({
             } else {
                 //console.log(data);
                 var data = JSON.parse(data);
-                Fiber(function () {
-                    for (var key in data) {
+
+                for (var key in data) {
+                    Fiber(function () {
                         data[key].forEach(function (card) {
                             var find = Cards.find({name: card.name}).fetch();
                             if (filterCard(card) && !Cards.findOne({id: card.id})) {
                                 Cards.insert(card);
                             }
                         });
-                    }
-                }).run();
+                        Fiber.yield();
+                    }).run();
+                }
+                return 'done';
             }
         });
         function filterCard(card) {
