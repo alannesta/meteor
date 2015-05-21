@@ -6,7 +6,7 @@ Meteor.methods({
 
     initCollection: function() {
         var fs = Npm.require('fs');
-        var path = '../../../../../public/data.json';
+        var path = '../web.browser/app/data.json';
 
         var cb = function(data) {
             var data = JSON.parse(data);
