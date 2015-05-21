@@ -23,9 +23,9 @@ Meteor.methods({
             return card.type === 'Minion' || card.type === 'Spell';
         }
 
-        var readFileSync = Meteor.wrapAsync(fs.readFile);
-        var result = readFileSync(path, 'utf-8');      // now readFile is "synchronous"
+        //var readFileSync = Meteor.wrapAsync(fs.readFile);
+        var result = fs.readFileSync(path, 'utf-8');      // now readFile is "synchronous"
         cb(result);
-        return 'Cards collection init success: ---> ' + process.cwd();
+        return 'Cards collection init success';
     }
 });
