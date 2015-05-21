@@ -4,10 +4,12 @@ Meteor.methods({
     },
 
     initCollection: function () {
-        var fs = Npm.require('fs');
-        var Fiber = Npm.require('fibers');
-        var path = '../../../../../public/data.json';
-        fs.readFile(path, 'utf-8', function (err, data) {
+        //var fs = Npm.require('fs');
+        //var path = '../../../../../public/data.json';
+
+        var path ='data.json';
+        // Metoer Assets API, no Fiber needed!
+        Assets.getText(path, function (err, data) {
             if (err) {
                 throw err;
             } else {
@@ -15,19 +17,17 @@ Meteor.methods({
                 var data = JSON.parse(data);
 
                 for (var key in data) {
-                    Fiber(function () {
-                        data[key].forEach(function (card) {
-                            var find = Cards.find({name: card.name}).fetch();
-                            if (filterCard(card) && !Cards.findOne({id: card.id})) {
-                                Cards.insert(card);
-                            }
-                        });
-                        Fiber.yield();
-                    }).run();
+                    data[key].forEach(function (card) {
+                        if (filterCard(card) && !Cards.findOne({id: card.id})) {
+                            Cards.insert(card);
+                        }
+                    });
                 }
-                return 'done';
             }
         });
+
+        return 'done';
+
         function filterCard(card) {
             return card.type === 'Minion' || card.type === 'Spell';
         }
