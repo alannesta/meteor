@@ -6,7 +6,7 @@ Meteor.methods({
     initCollection: function () {
         var fs = Npm.require('fs');
         var Fiber = Npm.require('fibers');
-        var path = '../../../../../public/data.json';
+        var path = '../web.browser/app/data.json';
         fs.readFile(path, 'utf-8', function (err, data) {
             if (err) {
                 throw err;
