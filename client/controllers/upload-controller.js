@@ -9,14 +9,18 @@
             self.filteredCards = self.cards;
             self.filter = {};     // the filter
 
+            self.reset = function() {
+                self.filter = {};
+                self.card = null;
+            };
             self.initDatabase = function() {
-                var start = Date.now();
                 Meteor.call('initCollection', function(err, result) {
                     if (err) {
                         console.log(err);
                     } else {
                         console.log(result);
-                        console.log(Date.now() - start);
+                        self.reset();
+                        $scope.$apply();
                     }
                 });
             };
@@ -27,6 +31,8 @@
                         console.log(err);
                     } else {
                         console.log(result);
+                        self.reset();
+                        $scope.$apply();
                     }
                 });
             };

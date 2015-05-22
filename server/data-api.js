@@ -1,35 +1,31 @@
 Meteor.methods({
-    clearCollection: function () {
+    clearCollection: function() {
         Cards.remove({});
+        return 'Cards collection cleaned';
     },
 
-    initCollection: function () {
+    initCollection: function() {
         var fs = Npm.require('fs');
-        var Fiber = Npm.require('fibers');
         var path = '../web.browser/app/data.json';
-        fs.readFile(path, 'utf-8', function (err, data) {
-            if (err) {
-                throw err;
-            } else {
-                //console.log(data);
-                var data = JSON.parse(data);
 
-                for (var key in data) {
-                    Fiber(function () {
-                        data[key].forEach(function (card) {
-                            var find = Cards.find({name: card.name}).fetch();
-                            if (filterCard(card) && !Cards.findOne({id: card.id})) {
-                                Cards.insert(card);
-                            }
-                        });
-                        Fiber.yield();
-                    }).run();
-                }
-                return 'done';
+        var cb = function(data) {
+            var data = JSON.parse(data);
+            for (var key in data) {
+                data[key].forEach(function(card) {
+                    if (filterCard(card) && !Cards.findOne({id: card.id})) {
+                        Cards.insert(card);
+                    }
+                });
             }
-        });
+        };
+
         function filterCard(card) {
             return card.type === 'Minion' || card.type === 'Spell';
         }
+
+        //var readFileSync = Meteor.wrapAsync(fs.readFile);
+        var result = fs.readFileSync(path, 'utf-8');      // now readFile is "synchronous"
+        cb(result);
+        return 'Cards collection init success';
     }
 });
