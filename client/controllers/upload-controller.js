@@ -9,6 +9,11 @@
             self.filteredCards = self.cards;
             self.filter = {};     // the filter
 
+            // md-chips model
+            self.tags = [];
+            self.selections = [];
+            self.chipReadOnly = true;
+
             self.reset = function() {
                 self.filter = {};
                 self.card = null;
@@ -51,6 +56,7 @@
                 return self.card;
             }, function(val) {
                 console.log('card selected: ---> ', val);
+                self.selections.push(val.name);
             }, true);
 
             // filtering criteria
