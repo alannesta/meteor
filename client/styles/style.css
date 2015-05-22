@@ -135,6 +135,18 @@ span.name {
 
 
 /*customized*/
+body {
+    height:100%;
+}
+
+div[ui-view] {
+    height:100%;
+}
+
+md-content{
+    height: 85%;
+}
+
 .tab-container{
     background-color: grey;
     position: relative;

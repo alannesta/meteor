@@ -10,42 +10,36 @@
         </md-button>
     </div>
 </md-toolbar>
-<md-content md-theme="docs-dark" class="md-padding" layout="row" layout-sm="column">
+<md-content md-theme="docs-dark" class="md-padding" layout="column" layout-sm="column" layout-align="center center">
 
-    <div layout layout-sm="column" layout-margin layout-align="center center">
-        <form id="card-select-form" name="uploadForm">
-            <md-select placeholder="Name" ng-model="ctrl.card">
-                <md-option ng-repeat="card in ctrl.filteredCards" ng-value="card">{{card.name}}</md-option>
-            </md-select>
+    <form id="card-select-form" name="uploadForm" layout layout-sm="column" layout-margin layout-align="center center">
+        <md-select placeholder="Name" ng-model="ctrl.card">
+            <md-option ng-repeat="card in ctrl.filteredCards" ng-value="card">{{card.name}}</md-option>
+        </md-select>
 
-            <md-select placeholder="Rarity" ng-model="ctrl.filter.rarity" flex>
-                <md-option value="Common">Normal</md-option>
-                <md-option value="Epic">Epic</md-option>
-                <md-option value="Rare">Rare</md-option>
-                <md-option value="Legendary">Legendary</md-option>
-            </md-select>
-            <!--</md-input-container>-->
+        <md-select placeholder="Rarity" ng-model="ctrl.filter.rarity" flex>
+            <md-option value="Common">Normal</md-option>
+            <md-option value="Epic">Epic</md-option>
+            <md-option value="Rare">Rare</md-option>
+            <md-option value="Legendary">Legendary</md-option>
+        </md-select>
+        <!--</md-input-container>-->
 
-            <md-select placeholder="Class" ng-model="ctrl.filter.class" flex>
-                <md-option value="General">General</md-option>
-                <md-option value="Druid">Druid</md-option>
-                <md-option value="Priest">Priest</md-option>
-                <md-option value="Shaman">Shaman</md-option>
-                <md-option value="Mage">Mage</md-option>
-                <md-option value="Warrior">Warrior</md-option>
-                <md-option value="Rogue">Rogue</md-option>
-                <md-option value="Warlock">Warlock</md-option>
-                <md-option value="Paladin">Paladin</md-option>
-            </md-select>
-        </form>
-    </div>
-
+        <md-select placeholder="Class" ng-model="ctrl.filter.class" flex>
+            <md-option value="General">General</md-option>
+            <md-option value="Druid">Druid</md-option>
+            <md-option value="Priest">Priest</md-option>
+            <md-option value="Shaman">Shaman</md-option>
+            <md-option value="Mage">Mage</md-option>
+            <md-option value="Warrior">Warrior</md-option>
+            <md-option value="Rogue">Rogue</md-option>
+            <md-option value="Warlock">Warlock</md-option>
+            <md-option value="Paladin">Paladin</md-option>
+        </md-select>
+    </form>
     <div layout="column">
         <md-chips ng-model="ctrl.selections" placeholder="senarios" readonly="ctrl.chipReadOnly">
             <!--<input type="number" ng-model="ctrl.numberBuffer" placeholder="Enter a number">-->
         </md-chips>
     </div>
-
-    <!--<md-button ng-click="ctrl.initDatabase()" class="md-fab">Init</md-button>-->
-    <!--<md-button ng-click="ctrl.cleanCollection()" class="md-fab">Clean All</md-button>-->
 </md-content>
