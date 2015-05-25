@@ -2,7 +2,7 @@
 
     angular
         .module('deckbuilder')
-        .controller('UploadController', ['$scope', '$meteor', function($scope, $meteor) {
+        .controller('BuildController', ['$scope', '$meteor', function($scope, $meteor) {
 
             var self = this;
             self.cards = $meteor.collection(Cards);
@@ -17,29 +17,6 @@
             self.reset = function() {
                 self.filter = {};
                 self.card = null;
-            };
-            self.initDatabase = function() {
-                Meteor.call('initCollection', function(err, result) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        console.log(result);
-                        self.reset();
-                        $scope.$apply();
-                    }
-                });
-            };
-
-            self.cleanCollection = function() {
-                Meteor.call('clearCollection', function(err, result) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        console.log(result);
-                        self.reset();
-                        $scope.$apply();
-                    }
-                });
             };
 
             self.next = function() {
@@ -56,7 +33,7 @@
                 return self.card;
             }, function(val) {
                 console.log('card selected: ---> ', val);
-                self.selections.push(val.name);
+                //self.selections.push(val.name);
             }, true);
 
             // filtering criteria

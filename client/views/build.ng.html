@@ -11,7 +11,6 @@
     </div>
 </md-toolbar>
 <md-content md-theme="docs-dark" class="md-padding" layout="column" layout-sm="column" layout-align="center center">
-
     <form id="card-select-form" name="uploadForm" layout layout-sm="column" layout-margin layout-align="center center">
         <md-select placeholder="Name" ng-model="ctrl.card">
             <md-option ng-repeat="card in ctrl.filteredCards" ng-value="card">{{card.name}}</md-option>

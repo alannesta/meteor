@@ -19,16 +19,15 @@ angular.module('deckbuilder', ['angular-meteor', 'ui.router', 'ngMaterial'])
                     templateUrl: 'client/views/probability.ng.html',
                     controller: 'ProbabilityController as ctrl'
                 })
-                .state('upload', {
-                    url: '/upload',
-                    templateUrl: 'client/views/upload.ng.html',
-                    controller: 'UploadController as ctrl'
+                .state('build', {
+                    url: '/build',
+                    templateUrl: 'client/views/build.ng.html',
+                    controller: 'BuildController as ctrl'
                 })
-                .state('test', {
-                    url: '/test',
-                    templateUrl: 'client/views/test.ng.html'
+                .state('admin', {
+                    url: '/admin',
+                    templateUrl: 'client/views/admin.ng.html',
+                    controller: 'AdminController as ctrl'
                 });
             $urlRouterProvider.otherwise("/parties");
-
-
         }]);

@@ -143,8 +143,12 @@ div[ui-view] {
     height:100%;
 }
 
+md-toolbar {
+    height: 10%;
+}
+
 md-content{
-    height: 85%;
+    height: 90%;
 }
 
 .tab-container{
