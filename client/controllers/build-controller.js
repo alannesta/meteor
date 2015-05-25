@@ -8,6 +8,7 @@
             self.cards = $meteor.collection(Cards);
             self.filteredCards = self.cards;
             self.filter = {};     // the filter
+            self.senarios = [];
 
             // md-chips model
             self.tags = [];
