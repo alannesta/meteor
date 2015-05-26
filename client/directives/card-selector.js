@@ -4,7 +4,8 @@
             restrict: 'E',
             scope: {
                 senarios: '=ngModel',
-                onFinish: '&'
+                onFinish: '&',
+                cards: '='
             },
             templateUrl: 'client/views/templates/card-selector.ng.html',
             link: function(scope, element, attrs) {
