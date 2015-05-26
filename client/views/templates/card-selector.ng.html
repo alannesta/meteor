@@ -1,9 +1,14 @@
 <div ng-repeat="senario in senarios">
-    <md-select ng-model="senario.name" placeholder="Quality">
-        <md-option value="Normal">Normal</md-option>
-        <md-option value="Epic">Epic</md-option>
-        <md-option value="Rare">Rare</md-option>
-        <md-option value="Legendary">Legendary</md-option>
+    <!--<md-select ng-model="senario.name" placeholder="Quality">-->
+        <!--<md-option value="Normal">Normal</md-option>-->
+        <!--<md-option value="Epic">Epic</md-option>-->
+        <!--<md-option value="Rare">Rare</md-option>-->
+        <!--<md-option value="Legendary">Legendary</md-option>-->
+    <!--</md-select>-->
+    <md-select ng-model="senario.name">
+        <md-option ng-repeat="card in cards" ng-value="card.name">
+            {{card.name}}
+        </md-option>
     </md-select>
     <md-select ng-model="senario.count" style="width:100px" placeholder="Count">
         <md-option value="1">1</md-option>

@@ -38,8 +38,17 @@
 
     </form>
     <div layout="column">
-        <md-chips ng-model="ctrl.selections" placeholder="senarios" readonly="ctrl.chipReadOnly">
-            <!--<input type="number" ng-model="ctrl.numberBuffer" placeholder="Enter a number">-->
+        <md-chips ng-model="ctrl.selections" placeholder="senarios" readonly="true">
+            <md-chip-template>
+                <div ng-if="ctrl.isArray($chip)" ng-repeat="chip in $chip">
+                    {{chip.name}} * {{chip.count}}
+                </div>
+
+                <span ng-if="!ctrl.isArray($chip)">
+                    {{$chip}}
+                </span>
+                <!--<span ng-if="$chip.name===undefined">{{$chip}}</span>-->
+            </md-chip-template>
         </md-chips>
     </div>
 </md-content>

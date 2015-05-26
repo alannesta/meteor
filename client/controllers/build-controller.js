@@ -30,10 +30,17 @@
                 self.step++;
             }
 
+            function filterCards() {
+                self.filterredCards = self.allCards.filter(function(card) {
+                    return self.class ? (self.class !== 'General' ? card.playerClass === self.class : card.playerClass === undefined) : true;
+                });
+            }
+
             $scope.$watch(function() {
                 return self.class;
             }, function(val) {
                 if (val) {
+                    filterCards();
                     forward(val);
                 }
             });
