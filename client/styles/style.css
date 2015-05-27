@@ -143,13 +143,13 @@ div[ui-view] {
     height:100%;
 }
 
-md-toolbar {
-    height: 10%;
-}
+/*md-toolbar {*/
+    /*height: 10%;*/
+/*}*/
 
-md-content{
-    height: 90%;
-}
+/*md-content{*/
+    /*height: 90%;*/
+/*}*/
 
 .tab-container{
     background-color: grey;
@@ -172,4 +172,24 @@ md-content{
 .preview{
     max-height: 200px;
     max-width: 300px;
+}
+
+.md-chips {
+    font-size: 18px;
+}
+
+.chip-container {
+    height: 200px;
+}
+
+md-chips.md-default-theme .md-chip {
+    background-color: lightgreen;
+}
+md-chips.md-default-theme .md-chips {
+    box-shadow: none;
+}
+
+
+.md-chips .md-chip {
+    height: auto;
 }

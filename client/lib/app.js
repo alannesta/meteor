@@ -5,7 +5,7 @@ angular.module('deckbuilder', ['angular-meteor', 'ui.router', 'ngMaterial'])
             //$locationProvider.html5Mode(true);
 
             $mdThemingProvider.theme('docs-dark', 'default')
-                .primaryPalette('brown')
+                .primaryPalette('indigo')
                 .accentPalette('red');
 
             $stateProvider
