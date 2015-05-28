@@ -3,7 +3,7 @@
         <span>Select A card</span>
     </div>
 </md-toolbar>
-<div layout="column" class="chip-container">
+<div class="chip-container">
     <md-chips ng-model="ctrl.selections" placeholder="senarios" readonly="true">
         <md-chip-template>
             <div ng-if="ctrl.isArray($chip)" ng-repeat="chip in $chip">

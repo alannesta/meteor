@@ -174,22 +174,27 @@ div[ui-view] {
     max-width: 300px;
 }
 
-.md-chips {
-    font-size: 18px;
+md-chips {
+    display: inline-block;
 }
 
 .chip-container {
     height: 200px;
+    text-align: center;
+    padding: 20px;
 }
 
 md-chips.md-default-theme .md-chip {
+    font-size: 18px;
     background-color: lightgreen;
 }
+
 md-chips.md-default-theme .md-chips {
     box-shadow: none;
 }
 
-
 .md-chips .md-chip {
     height: auto;
 }
+
+
