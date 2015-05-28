@@ -42,7 +42,9 @@
             <md-option value="Legendary">Legendary</md-option>
         </md-select>
 
-        <md-button ng-if="ctrl.step === 4" ng-click="ctrl.restart()">Re-select</md-button>
+        <md-button ng-if="ctrl.step === 4" class="md-fab md-hue-2" ng-click="ctrl.restart()">
+            <md-icon md-svg-src="youtube.svg" ></md-icon>
+        </md-button>
 
     </form>
 </md-content>
